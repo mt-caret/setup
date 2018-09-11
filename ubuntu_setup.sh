@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
 
 init() {
     sudo apt update
@@ -12,14 +12,14 @@ init() {
     git config --global user.email 'mtakeda.enigsol@gmail.com'
     git config --global credential.helper store
 
-    ln -s conf/.tmux.conf ~/.tmux.conf
+    ln -s "$PWD"/conf/.tmux.conf ~/.tmux.conf
 }
 
 setup_spacemacs() {
     sudo apt install --yes emacs
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-    ln -s conf/.spacemacs ~/.spacemacs
+    ln -s "$PWD"/conf/.spacemacs ~/.spacemacs
 
     FONT_HOME=~/.local/share/fonts
     echo "installing fonts at $PWD to $FONT_HOME"
